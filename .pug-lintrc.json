@@ -10,7 +10,6 @@
   "requireLowerCaseAttributes": true,
   "requireLineFeedAtFileEnd": true,
   "requireIdLiteralsBeforeAttributes": true,
-  "requireClassLiteralsBeforeAttributes": true,
   "disallowSpacesInsideAttributeBrackets": true,
   "disallowMultipleLineBreaks": true,
   "disallowLegacyMixinCall": true,
