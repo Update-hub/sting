@@ -52,7 +52,7 @@ gulp.task('js', () => {
           query: {
             presets: ['es2015'],
           },
-        }, ],
+        }],
       },
       output: {
         filename: 'script.js',
