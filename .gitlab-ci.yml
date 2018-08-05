@@ -1,0 +1,20 @@
+image: node:latest
+
+before_script:
+  - npm install
+
+cache:
+  paths:
+  - node_modules/
+
+exclude:
+  - node_modules
+
+pages:
+  script:
+   - gulp
+  artifacts:
+    paths:
+    - dist
+  only:
+    - master
