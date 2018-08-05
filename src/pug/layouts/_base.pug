@@ -1,14 +1,12 @@
-include /_config
-
 block variables
 
 doctype html
 html(lang='ja')
   head
     if title
-      title= `${title} | ${siteName}`
+      title= `${title} | ${site.appName}`
     else
-      title= siteName
+      title= site.appName
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width ,initial-scale=1')
     link(rel='manifest' href='/manifest.manifest')
@@ -21,8 +19,8 @@ html(lang='ja')
 
     include /layouts/_footer
 
-    if jquery
-      script(src='//code.jquery.com/jquery-3.3.1.slim.js')
+    if site.jquery
+      script(src='https://code.jquery.com/jquery-3.3.1.slim.js')
 
     script(src='/script.js')
     block script

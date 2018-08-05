@@ -1,15 +1,7 @@
 @import "lib/variables";
 @import "lib/mixins";
 @import "lib/reset";
-@import "lib/init";
+@import "lib/base";
 
-@import "layouts/grid";
-@import "layouts/container";
-@import "layouts/header";
-@import "layouts/footer";
-
-@import "components/hero";
-@import "components/heading";
-@import "components/table";
-@import "components/button";
-@import "components/list";
+@import "layout/**";
+@import "module/**";

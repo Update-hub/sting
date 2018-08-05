@@ -6,6 +6,7 @@ const sass = require('gulp-sass');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cached');
 const watch = require('gulp-watch');
+const data = require('gulp-data');
 const template = require('gulp-template');
 const plumber = require('gulp-plumber');
 const webpack = require('webpack-stream');
@@ -15,6 +16,8 @@ const getCSV = require('get-csv');
 const rename = require('gulp-rename');
 const pugLinter = require('gulp-pug-linter');
 const notify = require('gulp-notify');
+const sassGlob = require('gulp-sass-glob');
+const siteData = require('./site.json');
 
 gulp.task('pug', () => {
   gulp.src('./src/pug/pages/**/[^_]*.pug')
@@ -25,6 +28,7 @@ gulp.task('pug', () => {
         notify.onError('Pug Lint Error');
       }
     }))
+    .pipe(data((file) => ({site: siteData})))
     .pipe(pug({
       basedir: './src/pug',
     }))
@@ -34,6 +38,7 @@ gulp.task('pug', () => {
 gulp.task('sass', () => {
   gulp.src('./src/scss/style.scss')
     .pipe(plumber())
+    .pipe(sassGlob())
     .pipe(sass())
     .pipe(cleanCSS({
       level: 2,
@@ -100,21 +105,7 @@ gulp.task('create-blank-pages', () => {
 
 gulp.task('favicon', () => {
   gulp.src('./src/favicon*')
-    .pipe(favicons({
-      appName: 'Demo Site',
-      appDescription: 'Site description',
-      developerName: 'developer name',
-      developerURL: 'https://hoge/',
-      background: '#ffffff',
-      path: '/',
-      url: 'https://hoge/',
-      start_url: '/',
-      theme_color: '#2AB1D1',
-      lang: 'ja',
-      display: 'standalone',
-      orientation: 'portrait',
-      version: 1.0,
-    }))
+    .pipe(favicons(siteData))
     .pipe(gulp.dest('./public'));
 });
 

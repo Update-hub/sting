@@ -1,19 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="303 14.867 400 400">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400">
   <defs>
     <style>
       .cls-1 {
-        fill: #50a7c8;
-      }
-
-      .cls-2 {
-        fill: #fff;
-        font-size: 368px;
-        font-family: LiGothicMed, Apple LiGothic;
+        clip-path: url(#clip-アートボード_1);
       }
     </style>
+    <clipPath id="clip-アートボード_1">
+      <rect width="400" height="400"/>
+    </clipPath>
   </defs>
-  <g id="グループ化_1" data-name="グループ化 1" transform="translate(7 -254.133)">
-    <rect id="長方形_1" data-name="長方形 1" class="cls-1" width="400" height="400" transform="translate(296 269)"/>
-    <text id="U" class="cls-2" transform="translate(398.564 584.41)"><tspan x="0" y="0">U</tspan></text>
+  <g id="アートボード_1" data-name="アートボード – 1" class="cls-1">
+    <rect width="400" height="400"/>
   </g>
 </svg>
