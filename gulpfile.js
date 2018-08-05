@@ -28,7 +28,7 @@ gulp.task('pug', () => {
     .pipe(pug({
       basedir: './src/pug',
     }))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./public'));
 });
 
 gulp.task('sass', () => {
@@ -38,7 +38,7 @@ gulp.task('sass', () => {
     .pipe(cleanCSS({
       level: 2,
     }))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./public'));
 });
 
 gulp.task('js', () => {
@@ -58,12 +58,12 @@ gulp.task('js', () => {
         filename: 'script.js',
       },
     }))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('public/'));
 });
 
 gulp.task('image-copy', () =>
   gulp.src('./src/images/**/*')
-  .pipe(gulp.dest('dist/imgs'))
+  .pipe(gulp.dest('public/imgs'))
 );
 
 gulp.task('image', () =>
@@ -72,7 +72,7 @@ gulp.task('image', () =>
     progressive: true,
     interlaced: true,
   })))
-  .pipe(gulp.dest('dist/imgs'))
+  .pipe(gulp.dest('public/imgs'))
 );
 
 gulp.task('create-blank-pages', () => {
@@ -115,7 +115,7 @@ gulp.task('favicon', () => {
       orientation: 'portrait',
       version: 1.0,
     }))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./public'));
 });
 
 gulp.task('watch', ['build'], () => {
@@ -131,7 +131,7 @@ gulp.task('watch', ['build'], () => {
   watch('./src/js/**/*.js', () => {
     gulp.start('js');
   });
-  watch('./dist/**', () => {
+  watch('./public/**', () => {
     browserSync.reload();
   });
 });
@@ -141,7 +141,7 @@ gulp.task('serve', ['watch'], () => {
     open: true,
     ghostMode: false,
     server: {
-      baseDir: './dist',
+      baseDir: './public',
     },
   });
 });

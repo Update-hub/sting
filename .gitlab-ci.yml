@@ -13,6 +13,6 @@ pages:
    - gulp release
   artifacts:
     paths:
-    - dist
+    - public
   only:
     - master
