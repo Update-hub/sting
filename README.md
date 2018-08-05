@@ -1,11 +1,14 @@
 # Sting
 
-## Quickstart
+## Usage
 
 ```bash
-git clone https://github.com/Update-hub/sting.git
-cd sting
 yarn install
 gulp
 ```
 
+## Generate Pages
+
+```bash
+gulp create-blank-pages
+```

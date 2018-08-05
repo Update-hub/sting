@@ -45,16 +45,14 @@ gulp.task('js', () => {
   return gulp.src('./src/js/entry.js')
     .pipe(webpack({
       module: {
-        loaders: [
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-              presets: ['es2015'],
-            },
+        loaders: [{
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          query: {
+            presets: ['es2015'],
           },
-        ],
+        }, ],
       },
       output: {
         filename: 'script.js',
@@ -65,16 +63,16 @@ gulp.task('js', () => {
 
 gulp.task('image-copy', () =>
   gulp.src('./src/images/**/*')
-    .pipe(gulp.dest('dist/imgs'))
+  .pipe(gulp.dest('dist/imgs'))
 );
 
 gulp.task('image', () =>
   gulp.src('./src/images/**/*')
-    .pipe(cache(imagemin({
-      progressive: true,
-      interlaced: true,
-    })))
-    .pipe(gulp.dest('dist/imgs'))
+  .pipe(cache(imagemin({
+    progressive: true,
+    interlaced: true,
+  })))
+  .pipe(gulp.dest('dist/imgs'))
 );
 
 gulp.task('create-blank-pages', () => {
@@ -93,7 +91,9 @@ gulp.task('create-blank-pages', () => {
             title: page.title,
           }))
           .pipe(rename(page.path))
-          .pipe(gulp.dest('./src/pug/pages', {overwrite: false}));
+          .pipe(gulp.dest('./src/pug/pages', {
+            overwrite: false,
+          }));
       });
     });
 });
