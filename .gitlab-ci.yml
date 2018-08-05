@@ -10,7 +10,7 @@ cache:
 
 pages:
   script:
-   - gulp
+   - gulp release
   artifacts:
     paths:
     - dist
