@@ -5,6 +5,9 @@
   "repository": "git@gitlab.com:update-lab/web-starter-kit.git",
   "author": "Daichi Ninomiya <daichi.ninomiya@deer.co.jp>",
   "license": "MIT",
+  "scripts": {
+    "deploy-github": "gh-pages -d public"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
@@ -15,6 +18,7 @@
     "eslint-config-google": "^0.9.1",
     "file-exists": "^5.0.1",
     "get-csv": "^3.0.3",
+    "gh-pages": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-cached": "^1.1.1",
     "gulp-clean-css": "^3.9.3",

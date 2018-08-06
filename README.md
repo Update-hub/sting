@@ -18,3 +18,9 @@ gulp release
 ```bash
 gulp create-blank-pages
 ```
+
+## Deploy
+
+```bash
+npm run deploy-github
+```
