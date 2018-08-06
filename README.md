@@ -1,4 +1,6 @@
-# Web Starter Kit
+# ussg
+
+Update Static Site Generator
 
 ## Usage
 
@@ -13,14 +15,14 @@ gulp
 gulp release
 ```
 
-## Generate Pages
-
-```bash
-gulp create-blank-pages
-```
-
 ## Deploy
 
 ```bash
 npm run deploy-github
+```
+
+## Generate Blank Pages
+
+```bash
+gulp create-blank-pages
 ```
