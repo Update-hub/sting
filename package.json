@@ -26,6 +26,7 @@
     "gulp-pug": "^3.3.0",
     "gulp-pug-linter": "^0.5.1",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^3.1.0",
     "gulp-sass-glob": "^1.0.9",
     "gulp-template": "^5.0.0",

@@ -7,6 +7,12 @@ yarn install
 gulp
 ```
 
+## Release
+
+```bash
+gulp release
+```
+
 ## Generate Pages
 
 ```bash

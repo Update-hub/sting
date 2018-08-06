@@ -5,7 +5,7 @@
   "developerURL": "",
   "background": "#ffffff",
   "path": "/",
-  "url": "",
+  "url": "https://demo.jp",
   "start_url": "/",
   "theme_color": "#2AB1D1",
   "lang": "ja",
@@ -13,10 +13,12 @@
   "orientation": "portrait",
   "version": 1.0,
 
+  "format": true,
   "gtm": null,
   "ga": null,
   "sw": null,
   "amp": false,
   "jquery": true,
-  "ogp": false
+  "ogp": false,
+  "manifest": false
 }

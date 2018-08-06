@@ -17,6 +17,8 @@ const rename = require('gulp-rename');
 const pugLinter = require('gulp-pug-linter');
 const notify = require('gulp-notify');
 const sassGlob = require('gulp-sass-glob');
+const replace = require('gulp-replace');
+
 const siteData = require('./site.json');
 
 gulp.task('pug', () => {
@@ -31,19 +33,22 @@ gulp.task('pug', () => {
     .pipe(data((file) => ({site: siteData})))
     .pipe(pug({
       basedir: './src/pug',
+      pretty: siteData.format,
     }))
-    .pipe(gulp.dest('./public'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('sass', () => {
   gulp.src('./src/scss/style.scss')
     .pipe(plumber())
     .pipe(sassGlob())
-    .pipe(sass())
+    .pipe(sass({
+      outputStyle: siteData.format ? 'expanded' : 'compressed',
+    }))
     .pipe(cleanCSS({
       level: 2,
     }))
-    .pipe(gulp.dest('./public'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('js', () => {
@@ -63,12 +68,12 @@ gulp.task('js', () => {
         filename: 'script.js',
       },
     }))
-    .pipe(gulp.dest('public/'));
+    .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('image-copy', () =>
   gulp.src('./src/images/**/*')
-  .pipe(gulp.dest('public/imgs'))
+  .pipe(gulp.dest('dist/imgs'))
 );
 
 gulp.task('image', () =>
@@ -122,7 +127,7 @@ gulp.task('watch', ['build'], () => {
   watch('./src/js/**/*.js', () => {
     gulp.start('js');
   });
-  watch('./public/**', () => {
+  watch('./dist/**', () => {
     browserSync.reload();
   });
 });
@@ -132,11 +137,30 @@ gulp.task('serve', ['watch'], () => {
     open: true,
     ghostMode: false,
     server: {
-      baseDir: './public',
+      baseDir: './dist',
     },
   });
 });
 
+gulp.task('replaceUrl', () => {
+  let baseUrl = siteData.url;
+  if (baseUrl) {
+    if (siteData.url.match(/.*\/$/)) {
+      baseUrl = baseUrl.slice(0, -1);
+    }
+    gulp.src('./dist/**/*.{html,css}')
+      .pipe(replace(/src="\/([^\/])/gm, `src="${siteData.url}/$1`))
+      .pipe(replace(/href="\/([^\/?])/gm, `href="${siteData.url}/$1`))
+      .pipe(replace(/url\("\/([^\/])/gm, `url("${siteData.url}/$1`))
+      .pipe(gulp.dest('public/'));
+  }
+});
+
+gulp.task('release', ['build', 'image', 'favicon'], () => {
+  gulp.start('replaceUrl');
+  gulp.src('./dist/**/*.js')
+    .pipe(gulp.dest('public/'));
+});
+
 gulp.task('build', ['pug', 'sass', 'js', 'image-copy']);
-gulp.task('release', ['build', 'image', 'favicon']);
 gulp.task('default', ['serve']);
