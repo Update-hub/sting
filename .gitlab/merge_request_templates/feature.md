@@ -1,6 +1,6 @@
 # Issue
 
-`issue number`
+Closes #00
 
 ## Description
 
