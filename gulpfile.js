@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const fileExists = require('file-exists');
+const fs = require('fs');
 const pug = require('gulp-pug');
 const favicons = require('gulp-favicons');
 const sass = require('gulp-sass');
@@ -92,7 +92,7 @@ gulp.task('create-blank-pages', () => {
         page.path += page.path.match(/\/$/) ? '' : '/';
         page.path += 'index.pug';
 
-        if (fileExists.sync('./src/pug/pages' + page.path)) {
+        if (fs.existsSync('./src/pug/pages' + page.path)) {
           return true;
         }
 

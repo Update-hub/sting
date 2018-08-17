@@ -1,27 +1,29 @@
-# ussg
+# Ussg
 
 Update Static Site Generator
 
 ## Usage
+
+### Quick Start
 
 ```bash
 yarn install
 gulp
 ```
 
-## Release
+### Release
 
 ```bash
 gulp release
 ```
 
-## Deploy
+### Deploy
 
 ```bash
 npm run deploy-github
 ```
 
-## Generate Blank Pages
+### Generate Blank Pages
 
 ```bash
 gulp create-blank-pages
