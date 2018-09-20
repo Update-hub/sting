@@ -1,7 +1,7 @@
 {
   "validateIndentation": 2,
   "validateAttributeQuoteMarks": "'",
-  "validateAttributeSeparator": { "separator": " ", "multiLineSeparator": "\n " },
+  "validateAttributeSeparator": { "separator": ", ", "multiLineSeparator": "\n,  " },
   "validateDivTags": true,
   "requireStrictEqualityOperators": true,
   "requireSpecificAttributes": [ { "img": [ "alt" ] } ],
