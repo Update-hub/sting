@@ -53,6 +53,7 @@ gulp.task('sass', () => {
 
 gulp.task('js', () => {
   return gulp.src('./src/js/entry.js')
+    .pipe(plumber())
     .pipe(webpack({
       module: {
         loaders: [{
