@@ -157,16 +157,24 @@ gulp.task('replaceUrl', () => {
   }
 });
 
+gulp.task('pre-release', () => {
+  siteData.protect = siteData.isProtect && siteData.protectPassword;
+  gulp.start(['build'], () => {
+    gulp.src('./dist/**/*').pipe(gulp.dest('public/'));
+  });
+});
+
 gulp.task('release', ['build', 'image', 'favicon'], () => {
-  siteData.protect = true // quick basic
-  if (siteData.url) {
-    gulp.start('replaceUrl');
-    gulp.src('./dist/**/*.js')
+  gulp.start(['build'], () => {
+    if (siteData.isRelative) {
+      gulp.start('replaceUrl');
+      gulp.src('./dist/**/*.js')
       .pipe(gulp.dest('public/'));
-  } else {
-    gulp.src('./dist/**/*')
-      .pipe(gulp.dest('public/'));
-  }
+    } else {
+      gulp.src('./dist/**/*')
+        .pipe(gulp.dest('public/'));
+    }
+  });
 });
 
 gulp.task('build', ['pug', 'sass', 'js', 'image-copy']);
