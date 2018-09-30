@@ -19,7 +19,7 @@ html(lang='ja')
           display: none;
         }
     block meta
-  body
+  body(class=site.protect && 'is-protect', data-password=site.protect)
     include /layouts/_header
 
     block content
@@ -36,13 +36,14 @@ html(lang='ja')
     block script
     if site.protect
       script.
-        if (localStorage.auth) {
+        var passWord = $('body').data('password');
+        if (localStorage.auth === passWord) {
           $('body').removeClass('is-protect');
         } else {
           setTimeout(function () {
-            if (prompt('password') === 'dench') {
+            if (prompt('password') === passWord) {
               $('body').removeClass('is-protect');
-              localStorage.auth = true;
+              localStorage.auth = passWord;
             }
           }, 1000);
         }
