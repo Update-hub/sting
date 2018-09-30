@@ -9,9 +9,15 @@ html(lang='ja')
       title= site.appName
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width ,initial-scale=1')
+    meta(name='robots', content='noindex')
     if site.manifest
       link(rel='manifest', href='/manifest.manifest')
     link(rel='stylesheet', href='/style.css')
+    if site.protect
+      style.
+        .is-protect {
+          display: none;
+        }
     block meta
   body
     include /layouts/_header
@@ -28,3 +34,15 @@ html(lang='ja')
 
     script(src='/script.js')
     block script
+    if site.protect
+      script.
+        if (localStorage.auth) {
+          $('body').removeClass('is-protect');
+        } else {
+          setTimeout(function () {
+            if (prompt('password') === 'dench') {
+              $('body').removeClass('is-protect');
+              localStorage.auth = true;
+            }
+          }, 1000);
+        }
