@@ -158,9 +158,15 @@ gulp.task('replaceUrl', () => {
 });
 
 gulp.task('release', ['build', 'image', 'favicon'], () => {
-  gulp.start('replaceUrl');
-  gulp.src('./dist/**/*.js')
-    .pipe(gulp.dest('public/'));
+  siteData.protect = true // quick basic
+  if (siteData.url) {
+    gulp.start('replaceUrl');
+    gulp.src('./dist/**/*.js')
+      .pipe(gulp.dest('public/'));
+  } else {
+    gulp.src('./dist/**/*')
+      .pipe(gulp.dest('public/'));
+  }
 });
 
 gulp.task('build', ['pug', 'sass', 'js', 'image-copy']);
