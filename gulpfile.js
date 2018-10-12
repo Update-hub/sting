@@ -79,10 +79,10 @@ gulp.task('image-copy', () =>
 
 gulp.task('image', () =>
   gulp.src('./src/images/**/*')
-  .pipe(cache(imagemin({
+  .pipe(imagemin({
     progressive: true,
     interlaced: true,
-  })))
+  }))
   .pipe(gulp.dest('public/imgs'))
 );
 
