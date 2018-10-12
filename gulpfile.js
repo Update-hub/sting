@@ -4,7 +4,6 @@ const pug = require('gulp-pug');
 const favicons = require('gulp-favicons');
 const sass = require('gulp-sass');
 const imagemin = require('gulp-imagemin');
-const cache = require('gulp-cached');
 const watch = require('gulp-watch');
 const data = require('gulp-data');
 const template = require('gulp-template');
@@ -171,8 +170,11 @@ gulp.task('release', ['build', 'image', 'favicon'], () => {
       gulp.src('./dist/**/*.js')
       .pipe(gulp.dest('public/'));
     } else {
-      gulp.src('./dist/**/*')
-        .pipe(gulp.dest('public/'));
+      gulp.src([
+        './dist/**/*',
+        '!./dist/imgs/**/*',
+      ])
+      .pipe(gulp.dest('public/'));
     }
   });
 });
